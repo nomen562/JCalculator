@@ -7,7 +7,7 @@ public class Calculator implements ActionListener{
     JFrame frame;
     JTextField textField;
     JButton[] numberButtons = new JButton[10];
-    JButton[] functionButtons = new JButton[8];
+    JButton[] functionButtons = new JButton[9];
     JButton addButton, subButton, mulButton, divButton;
     JButton decButton, equButton, delButton, clrButton, negButton;
     JPanel panel;
@@ -48,10 +48,25 @@ public class Calculator implements ActionListener{
 		functionButtons[7] = clrButton;
 		functionButtons[8] = negButton;
 
-        frame.add(textField);
-        frame.setVisible(true);
+		for(int i =0;i<9;i++) {
+			functionButtons[i].addActionListener(this);
+			functionButtons[i].setFont(myFont);
+			functionButtons[i].setFocusable(false);
+		}
+		
+		for(int i =0;i<10;i++) {
+			numberButtons[i] = new JButton(String.valueOf(i));
+			numberButtons[i].addActionListener(this);
+			numberButtons[i].setFont(myFont);
+			numberButtons[i].setFocusable(false);
+		}
         
-        frame.setVisible(true);
+		negButton.setBounds(50,430,100,50);
+		delButton.setBounds(150,430,100,50);
+		clrButton.setBounds(250,430,100,50);        
+
+        frame.add(textField);
+        frame.setVisible(true); 
     }
     public static void main(String[] args) {    
         Calculator calculator = new Calculator();
